@@ -1,0 +1,61 @@
+﻿@model FileBasedDBApplication.Models.JsonStorageTable
+
+@{
+    ViewBag.Title = "READ AND DELETE";
+}
+
+<h2>JSON INFORMATION</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Key)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Key)
+                @Html.HiddenFor(model => model.Key)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Value)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Value)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+                @Html.HiddenFor(model => model.CreatedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TimeToLive)
+            </dt>
+
+            <dd>
+                @Html.HiddenFor(model => model.TimeToLive)
+                @Html.DisplayFor(model => model.TimeToLive)
+            </dd>
+
+        </dl>
+        <div class="form-group">
+            @if(Model.Active)
+            {
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Delete" class="btn btn-default" />
+                </div>
+            }
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
